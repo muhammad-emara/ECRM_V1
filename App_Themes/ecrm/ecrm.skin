@@ -1,0 +1,15 @@
+﻿    <asp:Label runat="server" CssClass="labelstyle"></asp:Label>
+    <asp:DropDownList  runat="server" CssClass="chzn-select selectstyle" > 
+    </asp:DropDownList>
+    <asp:TextBox runat="server" CssClass="inputstyle"></asp:TextBox>
+    <asp:LinkButton runat="server"  CssClass="lnkbtnstyle"></asp:LinkButton>
+    <asp:HyperLink runat="server"  CssClass="lnkbtnstyle"></asp:HyperLink>
+    <asp:Button runat="server" CssClass="flatbutton" />
+    <asp:CheckBoxList runat="server" CssClass="Checkstandard">
+    </asp:CheckBoxList>
+
+    <asp:GridView runat="server" CssClass="display" >
+            <RowStyle CssClass="rowStyle"/>
+            <HeaderStyle CssClass="headerStyle" />
+           <FooterStyle  CssClass="footerStyle"  />
+</asp:GridView>

@@ -1,0 +1,731 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ECRM - Home</title>
+
+   <!-- styles -->
+   <link rel="Stylesheet" href="css/main.css" type="text/css" media="screen" />
+
+    
+
+    <!--javascripts -->
+
+
+   <!-- main jquery file -->
+    <script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+
+
+  <!--  accordion left side menu script -->
+
+    <script src="js/scriptbreaker-multiple-accordion-1.js" type="text/javascript"></script>
+    <script type="text/javascript"  language="JavaScript">
+
+        $(document).ready(function () {
+//            $(".leftsideacc").accordion({
+//                accordion: true,
+//                speed: 500,
+//                closedSign: '[+]',
+//                openedSign: '[-]'
+//            });
+
+
+            $(".leftsideacc").accordion({
+                accordion: true,
+                speed: 500,
+           closedSign: '',
+           openedSign: ''
+            });
+
+
+
+            $(".hideblock").click(function () {
+                $(".leftside").css("width", "2%");
+
+            });
+
+            $(".accordionheader").click(function () {
+
+                $(this).parent().find('.accordiondetails').fadeToggle(200);
+
+            });
+
+            //$(".accordionheader2").click(function () {
+
+            //    $('.accordionheader').fadeToggle(200);
+
+            //});
+            $('.accordionheader').hover(function () {
+              $(this).parent().find('img:first').stop().animate({ opacity: 1 }, 1000);
+
+
+            });
+
+
+
+        $('.accordionheader').mouseout(function () {
+             $(this).parent().find('img:first').stop().animate({ opacity: 0 }, 1000);
+                    });
+                });
+
+    </script>
+
+     <!--  Filters script -->
+    <script src="js/jcarousel/jquery.jcarousel.min.js" type="text/javascript"></script>
+    <link href="js/jcarousel/skin.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#filtersoptions').jcarousel();
+        });
+
+	
+</script>
+
+
+     <!--  Gridview script -->
+    <link href="css/gridviewstyle.css" rel="stylesheet" />
+    <link href="css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
+    <script src="js/jquery.dataTables.js"></script>
+    <script src="js/GridviewFix.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+
+        jQuery.fn.dataTableExt.aTypes.unshift(
+    function (sData) {
+        var sValidChars = "0123456789-,";
+        var Char;
+        var bDecimal = false;
+
+        /* Check the numeric part */
+        for (i = 0 ; i < sData.length ; i++) {
+            Char = sData.charAt(i);
+            if (sValidChars.indexOf(Char) == -1) {
+                return null;
+            }
+
+            /* Only allowed one decimal place... */
+            if (Char == ",") {
+                if (bDecimal) {
+                    return null;
+                }
+                bDecimal = true;
+            }
+        }
+
+        return 'numeric-comma';
+    }
+);
+
+        jQuery.fn.dataTableExt.oSort['numeric-comma-asc'] = function (a, b) {
+            var x = (a == "-") ? 0 : a.replace(/,/, ".");
+            var y = (b == "-") ? 0 : b.replace(/,/, ".");
+            x = parseFloat(x);
+            y = parseFloat(y);
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        };
+
+        jQuery.fn.dataTableExt.oSort['numeric-comma-desc'] = function (a, b) {
+            var x = (a == "-") ? 0 : a.replace(/,/, ".");
+            var y = (b == "-") ? 0 : b.replace(/,/, ".");
+            x = parseFloat(x);
+            y = parseFloat(y);
+            return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+        };
+
+        //for asp.net
+        //$('#example').GridviewFix().dataTable({
+        //    "bJQueryUI": true,
+        //    "sPaginationType": "full_numbers"
+        //});
+
+        $(".hidetjis").css("display","none");
+        $('#example').dataTable({
+            "bJQueryUI": true,
+            "bLengthChange": false,
+            "sDom": '<"toolbar"><"wrapper"flipt>'
+        });
+        $("div.toolbar").html('<b style="width: 32%; float: left;margin-top: 7px;padding-left: 10px; color:#fff;"></b>');
+    });
+</script>
+</head>
+<body>
+
+
+    <div id="layout">
+        <div id="header">
+         
+         <a href="#" class="logoecrm"></a>
+        
+
+             <div class="mainmenu">
+                <ul>
+                    <li class="activesmall" style="width:50px;">
+                    <a href="#" class="homeicon" style="width:50px;"></a>
+                    </li>
+                    <li style="width:150px;"><a href="#" style="width:150px;">Customers</a></li>
+                <li style="width:150px;"><a href="#" style="width:150px;">Departments</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
+                </ul>
+        
+            </div>
+        </div>
+
+        <!--end of header-->
+
+
+
+        <div id="content">
+
+            
+            <div class="leftside leftblock">
+            
+            <ul class="leftsideacc">
+	<li><a href="#" target="scriptbreaker" class="firstaccmenu">Quick Menu<img src="images/icons/home.png" class="imgonleft" alt="Down" /></a>
+    <ul>
+
+	<li><a href="#">Dashboard<img src="images/icons/dashboard.png" class="imgonleft" alt="Down" /></a>
+	</li>
+	<li><a href="#">Notfications<img src="images/icons/notfications.png" class="imgonleft" alt="Down" /></a>
+	</li>
+
+    	<li><a href="#">Settings<img src="images/icons/setting.png" class="imgonleft" alt="Down" /></a>
+	</li>
+
+        </ul>
+        </li>
+
+        	<li><a href="#" target="scriptbreaker"  class="firstaccmenu">Accounts<img src="images/icons/users.png" class="imgonleft" alt="Down" /></a>
+    <ul>
+    	<li><a href="#">Accounts<img src="images/icons/setting.png" class="imgonleft" alt="Down" /></a>
+		<ul>
+			 <li class="active"><a href="#">Stats<img src="images/icons/stats.png" class="imgonleft" alt="Down" /></a></li>
+			 <li><a href="#">Account Balance<img src="images/icons/stats.png" class="imgonleft" alt="Down" /></a></li>
+			 <li><a href="#">Search<img src="images/icons/search.png" class="imgonleft" alt="Down" /></a></li>
+		</ul>
+	</li>
+
+        </ul>
+        </li>
+
+
+
+        	<li><a href="#" target="scriptbreaker"  class="firstaccmenu">Customers<img src="images/icons/info.png" class="imgonleft" alt="Down" /></a>
+    <ul>
+
+	<li><a href="#">Dashboard<img src="images/icons/dashboard.png" class="imgonleft" alt="Down" /></a>
+		<ul>
+			 <li><a href="#">Cookies</a></li>
+			 <li><a href="#">Events</a></li>
+			 <li><a href="#">Forms</a></li>
+			 <li><a href="#">Games</a></li>
+			 <li><a href="#">Images</a></li>
+			 <li><a href="#">Tabs</a></li>
+		</ul>
+	</li>
+
+        </ul>
+        </li>
+
+
+</ul>
+            </div>
+
+            <div class="leftblock div30 top20">
+                
+                <div class="accordionblock">
+                    <div class="accordionheader"><label>filters</label>
+                    <img src="images/icons/menu.png" class="imgonrighthide" alt="Down" /></div>
+                    <div class="accordiondetails"> 
+                    
+                    		<ul id="filtersoptions" class="jcarousel-skin-tango">
+          
+            <li><a href="#"><img src="images/carsoul/class.png" alt="" /></a></li>
+            <li><a href="#"><img src="images/carsoul/customer.png" alt="" /></a></li>
+            <li><a href="#"><img src="images/carsoul/team.png" alt="" /></a></li>
+            <li><a href="#"><img src="images/carsoul/partenar.png" alt="" /></a></li>
+            <li><a href="#"><img src="images/carsoul/admin.png" alt="" /></a></li>
+            <li><a href="#"><img src="images/carsoul/date.png" alt="" /></a></li>
+
+
+
+		</ul>
+
+                    </div>
+                
+                </div>
+                    
+            </div>
+        
+
+        <div class="leftblock div50 top20">
+                
+                <div class="accordionblock">
+                    <div class="accordionheader"><label>Filters Options</label>
+                    <img src="images/icons/menu.png" class="imgonrighthide" alt="Down" /></div>
+                    <div class="accordiondetails"> 
+                    
+                    	
+
+                    </div>
+                
+                </div>
+                    
+            </div>
+
+
+
+
+            <div class="leftblock div80 top20">
+                
+                <div class="accordionblock">
+                    <div class="accordionheader"><label>Team Summary</label>
+                    <img src="images/icons/menu.png" class="imgonrighthide" alt="Down" /></div>
+                    <div class="accordiondetails" style="padding-bottom:0;"> 
+                    
+                    	<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+	<thead>
+		<tr>
+			<th>Rendering engine</th>
+			<th>Browser</th>
+			<th>Platform(s)</th>
+			<th>Engine version</th>
+			<th>CSS grade</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="gradeX">
+			<td>Trident</td>
+			<td>Internet
+				 Explorer 4.0</td>
+			<td>Win 95+</td>
+			<td class="center">4</td>
+			<td class="center">X</td>
+		</tr>
+		<tr class="gradeC">
+			<td>Trident</td>
+			<td>Internet
+				 Explorer 5.0</td>
+			<td>Win 95+</td>
+			<td class="center">5</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Trident</td>
+			<td>Internet
+				 Explorer 5.5</td>
+			<td>Win 95+</td>
+			<td class="center">5.5</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Trident</td>
+			<td>Internet
+				 Explorer 6</td>
+			<td>Win 98+</td>
+			<td class="center">6</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Trident</td>
+			<td>Internet Explorer 7</td>
+			<td>Win XP SP2+</td>
+			<td class="center">7</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Trident</td>
+			<td>AOL browser (AOL desktop)</td>
+			<td>Win XP</td>
+			<td class="center">6</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Firefox 1.0</td>
+			<td>Win 98+ / OSX.2+</td>
+			<td class="center">1.7</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Firefox 1.5</td>
+			<td>Win 98+ / OSX.2+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Firefox 2.0</td>
+			<td>Win 98+ / OSX.2+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Firefox 3.0</td>
+			<td>Win 2k+ / OSX.3+</td>
+			<td class="center">1.9</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Camino 1.0</td>
+			<td>OSX.2+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Camino 1.5</td>
+			<td>OSX.3+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Netscape 7.2</td>
+			<td>Win 95+ / Mac OS 8.6-9.2</td>
+			<td class="center">1.7</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Netscape Browser 8</td>
+			<td>Win 98SE+</td>
+			<td class="center">1.7</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Netscape Navigator 9</td>
+			<td>Win 98+ / OSX.2+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.0</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.1</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1.1</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.2</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1.2</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.3</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1.3</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.4</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1.4</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.5</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1.5</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.6</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">1.6</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.7</td>
+			<td>Win 98+ / OSX.1+</td>
+			<td class="center">1.7</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Mozilla 1.8</td>
+			<td>Win 98+ / OSX.1+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Seamonkey 1.1</td>
+			<td>Win 98+ / OSX.2+</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Gecko</td>
+			<td>Epiphany 2.20</td>
+			<td>Gnome</td>
+			<td class="center">1.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>Safari 1.2</td>
+			<td>OSX.3</td>
+			<td class="center">125.5</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>Safari 1.3</td>
+			<td>OSX.3</td>
+			<td class="center">312.8</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>Safari 2.0</td>
+			<td>OSX.4+</td>
+			<td class="center">419.3</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>Safari 3.0</td>
+			<td>OSX.4+</td>
+			<td class="center">522.1</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>OmniWeb 5.5</td>
+			<td>OSX.4+</td>
+			<td class="center">420</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>iPod Touch / iPhone</td>
+			<td>iPod</td>
+			<td class="center">420.1</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Webkit</td>
+			<td>S60</td>
+			<td>S60</td>
+			<td class="center">413</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 7.0</td>
+			<td>Win 95+ / OSX.1+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 7.5</td>
+			<td>Win 95+ / OSX.2+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 8.0</td>
+			<td>Win 95+ / OSX.2+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 8.5</td>
+			<td>Win 95+ / OSX.2+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 9.0</td>
+			<td>Win 95+ / OSX.3+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 9.2</td>
+			<td>Win 88+ / OSX.3+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera 9.5</td>
+			<td>Win 88+ / OSX.3+</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Opera for Wii</td>
+			<td>Wii</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Nokia N800</td>
+			<td>N800</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Presto</td>
+			<td>Nintendo DS browser</td>
+			<td>Nintendo DS</td>
+			<td class="center">8.5</td>
+			<td class="center">C/A<sup>1</sup></td>
+		</tr>
+		<tr class="gradeC">
+			<td>KHTML</td>
+			<td>Konqureror 3.1</td>
+			<td>KDE 3.1</td>
+			<td class="center">3.1</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeA">
+			<td>KHTML</td>
+			<td>Konqureror 3.3</td>
+			<td>KDE 3.3</td>
+			<td class="center">3.3</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeA">
+			<td>KHTML</td>
+			<td>Konqureror 3.5</td>
+			<td>KDE 3.5</td>
+			<td class="center">3.5</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeX">
+			<td>Tasman</td>
+			<td>Internet Explorer 4.5</td>
+			<td>Mac OS 8-9</td>
+			<td class="center">-</td>
+			<td class="center">X</td>
+		</tr>
+		<tr class="gradeC">
+			<td>Tasman</td>
+			<td>Internet Explorer 5.1</td>
+			<td>Mac OS 7.6-9</td>
+			<td class="center">1</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeC">
+			<td>Tasman</td>
+			<td>Internet Explorer 5.2</td>
+			<td>Mac OS 8-X</td>
+			<td class="center">1</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Misc</td>
+			<td>NetFront 3.1</td>
+			<td>Embedded devices</td>
+			<td class="center">-</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeA">
+			<td>Misc</td>
+			<td>NetFront 3.4</td>
+			<td>Embedded devices</td>
+			<td class="center">-</td>
+			<td class="center">A</td>
+		</tr>
+		<tr class="gradeX">
+			<td>Misc</td>
+			<td>Dillo 0.8</td>
+			<td>Embedded devices</td>
+			<td class="center">-</td>
+			<td class="center">X</td>
+		</tr>
+		<tr class="gradeX">
+			<td>Misc</td>
+			<td>Links</td>
+			<td>Text only</td>
+			<td class="center">-</td>
+			<td class="center">X</td>
+		</tr>
+		<tr class="gradeX">
+			<td>Misc</td>
+			<td>Lynx</td>
+			<td>Text only</td>
+			<td class="center">-</td>
+			<td class="center">X</td>
+		</tr>
+		<tr class="gradeC">
+			<td>Misc</td>
+			<td>IE Mobile</td>
+			<td>Windows Mobile 6</td>
+			<td class="center">-</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeC">
+			<td>Misc</td>
+			<td>PSP browser</td>
+			<td>PSP</td>
+			<td class="center">-</td>
+			<td class="center">C</td>
+		</tr>
+		<tr class="gradeU">
+			<td>Other browsers</td>
+			<td>All others</td>
+			<td>-</td>
+			<td class="center">-</td>
+			<td class="center">U</td>
+		</tr>
+	</tbody>
+</table>
+
+                    </div>
+                
+                </div>
+                    
+            </div>
+
+
+        </div>
+
+
+       <!-- end of content-->
+
+
+
+        <div id="footer">
+        
+    
+        </div>
+    
+    
+        <!--end of footer-->
+    
+    
+    </div>
+</body>
+</html>
